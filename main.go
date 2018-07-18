@@ -2,10 +2,11 @@ package main
 
 import (
 	"context"
-	"jrpc-ws/client"
-	"jrpc-ws/server"
 	"log"
 	"os"
+
+	"github.com/raviolin/jrpc-ws/client"
+	"github.com/raviolin/jrpc-ws/server"
 
 	"bitbucket.org/creachadair/jrpc2"
 )

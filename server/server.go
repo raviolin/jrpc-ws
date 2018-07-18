@@ -1,9 +1,10 @@
 package server
 
 import (
-	"jrpc-ws/rwc"
 	"net/http"
 	"os"
+
+	"github.com/raviolin/jrpc-ws/rwc"
 
 	"bitbucket.org/creachadair/jrpc2/channel"
 

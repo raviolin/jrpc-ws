@@ -2,7 +2,8 @@ package client
 
 import (
 	"context"
-	"jrpc-ws/rwc"
+
+	"github.com/raviolin/jrpc-ws/rwc"
 
 	"bitbucket.org/creachadair/jrpc2"
 	"bitbucket.org/creachadair/jrpc2/channel"
