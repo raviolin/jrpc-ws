@@ -13,7 +13,6 @@ import (
 type Client struct {
 	WS  *websocket.Conn
 	RPC *jrpc2.Client
-	ctx context.Context
 }
 
 func New(url string) (cli *Client, err error) {
@@ -24,16 +23,9 @@ func New(url string) (cli *Client, err error) {
 	}
 	io := rwc.New(cli.WS)
 	cli.RPC = jrpc2.NewClient(channel.RawJSON(io, io), nil)
-	cli.ctx = context.Background()
 	return
 }
 
-func (cli *Client) Call(method string, params interface{}) (interface{}, error) {
-	var result interface{}
-	err := cli.RPC.CallResult(cli.ctx, method, params, &result)
-	return result, err
-}
-
-func (cli *Client) CallResult(method string, params interface{}, result interface{}) error {
-	return cli.RPC.CallResult(cli.ctx, method, params, result)
+func (cli *Client) Call(method string, params interface{}, result interface{}) error {
+	return cli.RPC.CallResult(context.Background(), method, params, result)
 }
