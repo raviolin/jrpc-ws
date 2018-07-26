@@ -25,9 +25,8 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 		w.WriteHeader(400)
 		return
 	}
-	srv := jrpc2.NewServer(s.assigner, nil)
 	io := rwc.New(conn)
-	srv.Start(channel.RawJSON(io, io))
+	jrpc2.NewServer(s.assigner, nil).Start(channel.RawJSON(io, io))
 }
 
 func (s *Server) Start() error {
