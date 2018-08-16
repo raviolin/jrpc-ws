@@ -10,22 +10,34 @@ import (
 	"github.com/gorilla/websocket"
 )
 
+// Client manages RPC connections
 type Client struct {
-	WS  *websocket.Conn
-	RPC *jrpc2.Client
+	ws  *websocket.Conn
+	rpc *jrpc2.Client
 }
 
-func New(url string) (cli *Client, err error) {
+// New creates an instance of Client
+func New(url string, options *jrpc2.ClientOptions) (cli *Client, err error) {
 	cli = &Client{}
-	cli.WS, _, err = websocket.DefaultDialer.Dial(url, nil)
+	cli.ws, _, err = websocket.DefaultDialer.Dial(url, nil)
 	if err != nil {
 		return
 	}
-	io := rwc.New(cli.WS)
-	cli.RPC = jrpc2.NewClient(channel.RawJSON(io, io), nil)
+	io := rwc.New(cli.ws)
+	cli.rpc = jrpc2.NewClient(channel.RawJSON(io, io), options)
 	return
 }
 
+// Call makes an RPC call to a method
 func (cli *Client) Call(method string, params interface{}, result interface{}) error {
-	return cli.RPC.CallResult(context.Background(), method, params, result)
+	res, err := cli.rpc.Call(context.Background(), method, params)
+	if err != nil {
+		return err
+	}
+	return res.UnmarshalResult(result)
+}
+
+// Close will close WebSocket
+func (cli *Client) Close() error {
+	return cli.ws.Close()
 }

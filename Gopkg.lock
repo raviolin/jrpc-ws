@@ -2,43 +2,57 @@
 
 
 [[projects]]
+  digest = "1:4e0e81f847740b540d75ec7b701ff31b053054a8937f873e62480aa2fa4dc902"
   name = "bitbucket.org/creachadair/jrpc2"
   packages = [
     ".",
     "channel",
     "code",
-    "metrics"
+    "metrics",
   ]
+  pruneopts = "UT"
   revision = "74be6414ed3664b591fb9690fef9fcd4f3575dc6"
   version = "v0.0.28"
 
 [[projects]]
+  digest = "1:9d34ef5daaa36dd43056ebb2f54c34257b032af53d733e8d1f78d788b78f6d3f"
   name = "bitbucket.org/creachadair/stringset"
   packages = ["."]
+  pruneopts = "UT"
   revision = "c38e5b3fb76c3149a050bcdf5474cd0843916736"
   version = "v0.0.2"
 
 [[projects]]
+  digest = "1:43dd08a10854b2056e615d1b1d22ac94559d822e1f8b6fcc92c1a1057e85188e"
   name = "github.com/gorilla/websocket"
   packages = ["."]
+  pruneopts = "UT"
   revision = "ea4d1f681babbce9545c9c5f3d5194a789c89f5b"
   version = "v1.2.0"
 
 [[projects]]
   branch = "master"
+  digest = "1:76ee51c3f468493aff39dbacc401e8831fbb765104cbf613b89bef01cf4bad70"
   name = "golang.org/x/net"
   packages = ["context"]
-  revision = "3673e40ba22529d22c3fd7c93e97b0ce50fa7bdd"
+  pruneopts = "UT"
+  revision = "c39426892332e1bb5ec0a434a079bf82f5d30c54"
 
 [[projects]]
   branch = "master"
+  digest = "1:e0140c0c868c6e0f01c0380865194592c011fe521d6e12d78bfd33e756fe018a"
   name = "golang.org/x/sync"
   packages = ["semaphore"]
+  pruneopts = "UT"
   revision = "1d60e4601c6fd243af51cc01ddf169918a5407ca"
 
 [solve-meta]
   analyzer-name = "dep"
   analyzer-version = 1
-  inputs-digest = "aa8c1a98ac8a8d7887a28e5545e7b27d96ddbb77818a4fb8f8298db2bd694812"
+  input-imports = [
+    "bitbucket.org/creachadair/jrpc2",
+    "bitbucket.org/creachadair/jrpc2/channel",
+    "github.com/gorilla/websocket",
+  ]
   solver-name = "gps-cdcl"
   solver-version = 1
