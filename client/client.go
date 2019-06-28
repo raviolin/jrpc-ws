@@ -3,11 +3,10 @@ package client
 import (
 	"context"
 
-	"github.com/raviolin/jrpc-ws/rwc"
-
-	"bitbucket.org/creachadair/jrpc2"
-	"bitbucket.org/creachadair/jrpc2/channel"
+	"github.com/creachadair/jrpc2"
+	"github.com/creachadair/jrpc2/channel"
 	"github.com/gorilla/websocket"
+	"github.com/raviolin/jrpc-ws/rwc"
 )
 
 type Client struct {
